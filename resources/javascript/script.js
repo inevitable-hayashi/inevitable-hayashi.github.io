@@ -14,6 +14,6 @@ PIXI.Assets.add({ alias: "skeleton-atlas", src: "../spine/yuunicorn/IMG_4693.atl
 await PIXI.Assets.load["skeleton-data", "skeleton-atlas"];
 // assetsは大文字
 
-const yuunicorn = spine.Spine.from({skelton: "IMG_4693", atlas: "IMG_4693"});
+const yuunicorn = spine.Spine.from({skelton: "skeleton-data", atlas: "skeleton-atlas"});
 
 app.stage.addChild(yuunicorn);

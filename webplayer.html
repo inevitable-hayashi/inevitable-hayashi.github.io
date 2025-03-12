@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spine Web Player</title>
+    <link rel="stylesheet" href="https://unpkg.com/@esotericsoftware/spine-player@4.2.*/dist/spine-player.min.css">
+</head>
+<body>
+    <script src="https://unpkg.com/@esotericsoftware/spine-player@4.2.*/dist/iife/spine-player.min.js"></script>
+    <div id="player-container" style="width: 100%; height: 100vh;"></div>
+    <script>
+        new spine.SpinePlayer("player-container", {
+            skeleton: "resources/spine/yuunicorn/IMG_4693.json",
+            atlas: "resources/spine/yuunicorn/IMG_4693.atlas",
+            animation: "coma",
+            backgroundImage: { // スケルトンの背後に背景画像を表示
+                url: "resources/images/bg.jpg",
+                x: 0,
+                y: 0,
+                width: 1200,
+                height: 675
+            },
+            showControls: false ,
+            // successしたとき
+            success: function (player) {
+                player.setAnimation("running", true);
+                player.animationState.addAnimation(1, "coma", true, 0);
+            },
+            error: function (player, reason) {
+                alert(reason);
+            }
+        });
+
+        // state.setEmptyAnimation(track, 0);
+        // TrackEntry entry = state.addAnimation(track, "walking", true, 0);
+        // entry.mixDuration = 1.5;
+    </script>
+</body>
+</html>
